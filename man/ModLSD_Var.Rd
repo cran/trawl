@@ -24,6 +24,3 @@ A random variable \eqn{X} has modified logarithmic series
  \eqn{P(X=0)=(1-\delta)} and \deqn{P(X=x)=(1-\delta)(-1)/(\log(1-p))p^x/x,
  \mbox{ for }  x=1,2,\dots.}
 }
-\examples{
-ModLSD_Var(0.2,0.5)
-}

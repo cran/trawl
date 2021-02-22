@@ -4,10 +4,14 @@
 \alias{fit_trawl_intersection_Exp}
 \title{Finds the intersection of two exponential trawl sets}
 \usage{
-fit_trawl_intersection_Exp(lambda1, lambda2, plotdiag = FALSE)
+fit_trawl_intersection_Exp(lambda1, lambda2, LM1, LM2, plotdiag = FALSE)
 }
 \arguments{
 \item{lambda1, lambda2}{parameters of the two exponential trawls}
+
+\item{LM1}{Lebesgue measure of the first trawl}
+
+\item{LM2}{Lebesgue measure of the second trawl}
 
 \item{plotdiag}{binary variable specifying whether or not diagnostic plots
 should be provided}
@@ -21,8 +25,4 @@ Finds the intersection of two exponential trawl sets
 \details{
 Computes \eqn{R_{12}(0)=\mbox{Leb}(A_1 \cap A_2)} based on two trawl
  functions \eqn{g_1} and \eqn{g_2}.
-}
-\examples{
-#Compute the intersection of two exponential trawls
-fit_trawl_intersection_Exp(0.1,0.5)
 }

@@ -29,8 +29,5 @@ The trawl function is parametrised by the two parameters \eqn{H> 1}
  \deqn{r(x)=(1+x/\alpha)^{(1-H)}, \mbox{ for } x \ge 0.}
 }
 \examples{
-#Evaluate the trawl autocorrelation function at x=1
 acf_LM(1,0.3,1.5)
-#Plot the trawl autocorrelation function
-plot(acf_LM((0:10),0.3,1.5))
 }

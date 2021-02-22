@@ -22,6 +22,3 @@ Correlation of the components of a bivariate vector following the
 Computes the correlation of the components of a bivariate vector following the
 bivariate  logarithmic series distribution
 }
-\examples{
-BivLSD_Cor(0.2,0.5)
-}

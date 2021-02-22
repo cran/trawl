@@ -33,8 +33,5 @@ The trawl function is parametrised by parameters \eqn{0\le w\le 1}
  w/\lambda_1+(1-w)/\lambda_2.}
 }
 \examples{
-#Evaluate the trawl autocorrelation function at x=1
 acf_DExp(1,0.3,0.1,2)
-#Plot the trawl autocorrelation function
-plot(acf_DExp((0:10),0.3,0.1,2))
 }

@@ -4,8 +4,7 @@
 \alias{fit_supIGtrawl}
 \title{Fits a supIG trawl function to equidistant univariate time series data}
 \usage{
-fit_supIGtrawl(x, Delta = 1, GMMlag = 5, plotacf = FALSE,
-  lags = 100)
+fit_supIGtrawl(x, Delta = 1, GMMlag = 5, plotacf = FALSE, lags = 100)
 }
 \arguments{
 \item{x}{vector of equidistant time series data}
@@ -39,24 +38,4 @@ The trawl function is parametrised by the two parameters \eqn{\delta
  \mbox{ for }  x \le 0.} It is assumed that \eqn{\delta} and \eqn{\gamma} are
  not simultaneously equal to zero. The Lebesgue measure of the corresponding
  trawl set is given by \eqn{\gamma/\delta}.
-}
-\examples{
-\donttest{
-#Simulate a univariate trawl process and fit the supIG trawl function
-set.seed(1)
-t <- 1000
-Delta <- 1
-v <- 250
-delta <- 0.5
-gamma <- 1
-#Simulate a univariate trawl process with supIG trawl function and
-#Poisson marginal law
-trawl <- sim_UnivariateTrawl(t,Delta,burnin=50,marginal =c("Poi"),trawl
-="supIG",v=v, delta=delta,gamma=gamma)
-#Fit the supIG trawl function to the simulated data
-fittrawlfct <- fit_supIGtrawl(trawl,Delta, plotacf=TRUE,lags=500)
-#Print the results
-print(paste("delta: estimated:", fittrawlfct$delta, ", theoretical:", delta))
-print(paste("gamma: estimated:", fittrawlfct$gamma, ", theoretical:", gamma))
-}
 }

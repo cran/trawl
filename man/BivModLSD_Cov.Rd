@@ -25,6 +25,3 @@ Covariance of the components of a bivariate vector following the
 Computes the covariance of the components of a bivariate vector following the
 bivariate modified  logarithmic series distribution
 }
-\examples{
-BivModLSD_Cov(0.2, 0.3, 0.5)
-}

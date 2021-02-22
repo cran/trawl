@@ -27,9 +27,3 @@ The trawl function is parametrised by parameters \eqn{0\leq w\leq 1}
  and \eqn{\lambda_1, \lambda_2 > 0}  as follows: \deqn{g(x) = w e^{\lambda_1
  x}+(1-w) e^{\lambda_2 xz},  \mbox{ for }  x \le 0.}
 }
-\examples{
-#Evaluate the trawl function at x=-2
-trawl_DExp(-2,0.4,0.1,0.9)
-#Plot the trawl function
-plot(trawl_DExp(-(0:10),0.4,0.1,0.9))
-}

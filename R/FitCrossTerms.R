@@ -21,9 +21,6 @@
 #'@return The Lebesgue measure of the intersection of the two trawl sets
 #'@details Computes \eqn{R_{12}(0)=\mbox{Leb}(A_1 \cap A_2)} based on two trawl
 #'  functions \eqn{g_1} and \eqn{g_2}.
-#'@examples
-#'#Compute the intersection of two exponential trawls
-#'fit_trawl_intersection(fct1="Exp",fct2="Exp",lambda11=0.1,lambda21=0.5,LM1=1/0.1,LM2=1/0.5)
 #'@export
 
 fit_trawl_intersection <- function(fct1 =base::c("Exp", "DExp", "supIG", "LM"),fct2 =base::c("Exp", "DExp", "supIG", "LM"),
@@ -96,21 +93,16 @@ fit_trawl_intersection <- function(fct1 =base::c("Exp", "DExp", "supIG", "LM"),f
 #'Finds the intersection of two long memory (LM) trawl sets
 #'@name fit_trawl_intersection_LM
 #'@param alpha1,H1,alpha2,H2 parameters of the two long memory trawls
+#'@param LM1 Lebesgue measure of the first trawl
+#'@param LM2 Lebesgue measure of the second trawl
 #'@param plotdiag binary variable specifying whether or not diagnostic plots
 #'  should be provided
 #'@return the Lebesgue measure of the intersection of the two trawl sets
 #'@details Computes \eqn{R_{12}(0)=\mbox{Leb}(A_1 \cap A_2)} based on two trawl
 #'  functions \eqn{g_1} and \eqn{g_2}.
-#'@examples
-#'#Compute the intersection of two long memory trawls
-#'fit_trawl_intersection_LM(0.1,1.1,0.2,1.2)
-
 #'@export
 
-fit_trawl_intersection_LM <- function(alpha1,H1,alpha2,H2,plotdiag=FALSE){
-
-LM1 <-alpha1/(1-H1)
-LM2 <-alpha2/(1-H2)
+fit_trawl_intersection_LM <- function(alpha1,H1,alpha2,H2,LM1, LM2,plotdiag=FALSE){
 
 g1 <- function(z){trawl_LM(z,alpha1,H1)}
 g2 <- function(z){trawl_LM(z,alpha2,H2)}
@@ -170,21 +162,16 @@ return(R12)
 #'Finds the intersection of two exponential trawl sets
 #'@name fit_trawl_intersection_Exp
 #'@param lambda1,lambda2 parameters of the two exponential trawls
+#'@param LM1 Lebesgue measure of the first trawl
+#'@param LM2 Lebesgue measure of the second trawl
 #'@param plotdiag binary variable specifying whether or not diagnostic plots
 #'  should be provided
 #'@return The Lebesgue measure of the intersection of the two trawl sets
 #'@details Computes \eqn{R_{12}(0)=\mbox{Leb}(A_1 \cap A_2)} based on two trawl
 #'  functions \eqn{g_1} and \eqn{g_2}.
-#'@examples
-#'#Compute the intersection of two exponential trawls
-#'fit_trawl_intersection_Exp(0.1,0.5)
-
 #'@export
 
-fit_trawl_intersection_Exp <- function(lambda1,lambda2,plotdiag=FALSE){
-
-  LM1 <- 1/lambda1
-  LM2 <- 1/lambda2
+fit_trawl_intersection_Exp <- function(lambda1,lambda2,LM1, LM2,plotdiag=FALSE){
 
   g1 <- function(z) {trawl_Exp(z,lambda1)}
   g2 <- function(z) {trawl_Exp(z,lambda2)}

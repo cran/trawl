@@ -14,10 +14,7 @@
 #'Its autocorrelation function is given by:
 #'\deqn{r(x) = e^{-\lambda x},  \mbox{ for } x \ge 0.}
 #'@examples
-#'#Evaluate the trawl autocorrelation function at x=1
 #'acf_Exp(1,0.1)
-#'#Plot the trawl autocorrelation function
-#'plot(acf_Exp((0:10),0.1))
 #'@export
 acf_Exp <- function(x,lambda){exp(-lambda*x)}
 
@@ -41,10 +38,7 @@ acf_Exp <- function(x,lambda){exp(-lambda*x)}
 #'  e^{-\lambda_2 x}/\lambda_2)/c,  \mbox{ for } x \ge 0,} where \deqn{c =
 #'  w/\lambda_1+(1-w)/\lambda_2.}
 #'@examples
-#'#Evaluate the trawl autocorrelation function at x=1
 #'acf_DExp(1,0.3,0.1,2)
-#'#Plot the trawl autocorrelation function
-#'plot(acf_DExp((0:10),0.3,0.1,2))
 #'@export
 acf_DExp <- function(x,w,lambda1,lambda2){(w*exp(-lambda1*x)/lambda1+(1-w)*exp(-lambda2*x)/lambda2)/(w/lambda1+(1-w)/lambda2)}
 
@@ -67,10 +61,7 @@ acf_DExp <- function(x,w,lambda1,lambda2){(w*exp(-lambda1*x)/lambda1+(1-w)*exp(-
 #'  \deqn{r(x) = \exp(\delta\gamma (1-\sqrt{1+2 x/\gamma^2})),  \mbox{ for } x
 #'  \ge 0.}
 #'@examples
-#'#Evaluate the trawl autocorrelation function at x=1
 #'acf_supIG(1,0.3,0.1)
-#'#Plot the trawl autocorrelation function
-#'plot(acf_supIG((0:10),0.3,0.1))
 #'@export
 acf_supIG <- function(x,delta,gamma){exp(delta*gamma*(1-sqrt(1+2*x/gamma^2)))}
 
@@ -90,10 +81,6 @@ acf_supIG <- function(x,delta,gamma){exp(delta*gamma*(1-sqrt(1+2*x/gamma^2)))}
 #'  }  x \le 0.} Its autocorrelation function is given by
 #'  \deqn{r(x)=(1+x/\alpha)^{(1-H)}, \mbox{ for } x \ge 0.}
 #'@examples
-#'#Evaluate the trawl autocorrelation function at x=1
 #'acf_LM(1,0.3,1.5)
-#'#Plot the trawl autocorrelation function
-#'plot(acf_LM((0:10),0.3,1.5))
-
 #'@export
 acf_LM <- function(x,alpha, H){(1+x/alpha)^(1-H)}

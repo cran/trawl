@@ -40,12 +40,3 @@ The probability mass function of a random vector
  bivariate negative binomial distribution with parameters \eqn{(x_1,p_2,p_3)}
  when  \eqn{x_1>0}.
 }
-\examples{
-set.seed(1)
-p1 <- 0.15
-p2 <- 0.25
-p3 <- 0.55
-N <- 100
-#Simulate N realisations from the bivariate LSD
-y <- Trivariate_LSDsim(N, p1, p2, p3)
-}

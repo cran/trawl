@@ -248,6 +248,10 @@ trawl2 <- simdata[,2]
 #####Produce a bivariate histogram of the simulated data
 trawl::plot_2and1hist(trawl1,trawl2)
 
+#####Produce a bivariate histogram of the simulated data
+# using ggplot2
+trawl::plot_2and1hist_gg(trawl1,trawl2)
+
 
 ###Fit the parameters of the exponential trawl functions
 fit1 <- trawl::fit_Exptrawl(trawl1)

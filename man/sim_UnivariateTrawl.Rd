@@ -4,10 +4,23 @@
 \alias{sim_UnivariateTrawl}
 \title{Simulates a univariate trawl process}
 \usage{
-sim_UnivariateTrawl(t, Delta = 1, burnin = 10,
-  marginal = base::c("Poi", "NegBin"), trawl = base::c("Exp", "DExp",
-  "supIG", "LM"), v = 0, m = 0, theta = 0, lambda1 = 0,
-  lambda2 = 0, w = 0, delta = 0, gamma = 0, alpha = 0, H = 0)
+sim_UnivariateTrawl(
+  t,
+  Delta = 1,
+  burnin = 10,
+  marginal = base::c("Poi", "NegBin"),
+  trawl = base::c("Exp", "DExp", "supIG", "LM"),
+  v = 0,
+  m = 0,
+  theta = 0,
+  lambda1 = 0,
+  lambda2 = 0,
+  w = 0,
+  delta = 0,
+  gamma = 0,
+  alpha = 0,
+  H = 0
+)
 }
 \arguments{
 \item{t}{parameter which specifying the length of the time interval
@@ -54,17 +67,4 @@ This function simulates a univariate trawl process with either
  currently four choices: exponential, double-exponential, supIG or long
  memory. More details on the precise simulation algorithm is available in the
  vignette.
-}
-\examples{
-set.seed(1)
-t <- 100
-Delta <- 1
-v <- 250
-lambda <- 0.25
-#Simulate a univariate trawl process with exponential trawl function and
-#Poisson marginal law
-trawl <- sim_UnivariateTrawl(t,Delta,burnin=50,marginal =c("Poi"),trawl
-="Exp",v=v, lambda1=lambda)
-#Plot the sample path of the simulated process
-plot(trawl,type="p")
 }

@@ -28,8 +28,5 @@ Its autocorrelation function is given by:
 \deqn{r(x) = e^{-\lambda x},  \mbox{ for } x \ge 0.}
 }
 \examples{
-#Evaluate the trawl autocorrelation function at x=1
 acf_Exp(1,0.1)
-#Plot the trawl autocorrelation function
-plot(acf_Exp((0:10),0.1))
 }

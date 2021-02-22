@@ -25,9 +25,3 @@ The trawl function is parametrised by the two parameters \eqn{H> 1}
  and \eqn{\alpha > 0} as follows: \deqn{g(x) = (1-x/\alpha)^{-H},  \mbox{ for
  }  x \le 0.}
 }
-\examples{
-#Evaluate the trawl function at x=-2
-trawl_LM(-2,0.9,1.5)
-#Plot the trawl function
-plot(trawl_LM(-(0:10),0.9,1.5))
-}

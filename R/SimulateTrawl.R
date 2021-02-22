@@ -6,11 +6,6 @@
 #'@return The exponential trawl function evaluated at x
 #'@details The trawl function is parametrised by parameter \eqn{\lambda > 0}  as
 #'  follows: \deqn{g(x) = e^{\lambda x},  \mbox{ for }  x \le 0.}
-#'@examples
-#'#Evaluate the trawl function at x=-2
-#'trawl_Exp(-2,0.4)
-#'#Plot the trawl function
-#'plot(trawl_Exp(-(0:10),0.4))
 #'@export
 trawl_Exp <- function(x,lambda){exp(x*lambda)}
 
@@ -25,12 +20,6 @@ trawl_Exp <- function(x,lambda){exp(x*lambda)}
 #'@details The trawl function is parametrised by parameters \eqn{0\leq w\leq 1}
 #'  and \eqn{\lambda_1, \lambda_2 > 0}  as follows: \deqn{g(x) = w e^{\lambda_1
 #'  x}+(1-w) e^{\lambda_2 xz},  \mbox{ for }  x \le 0.}
-#'@examples
-#'#Evaluate the trawl function at x=-2
-#'trawl_DExp(-2,0.4,0.1,0.9)
-#'#Plot the trawl function
-#'plot(trawl_DExp(-(0:10),0.4,0.1,0.9))
-
 #'@export
 trawl_DExp <- function(x,w,lambda1,lambda2){w*exp(lambda1*x)+(1-w)*exp(lambda2*x)}
 
@@ -46,12 +35,6 @@ trawl_DExp <- function(x,w,lambda1,lambda2){w*exp(lambda1*x)+(1-w)*exp(lambda2*x
 #'  (1-2x\gamma^{-2})^{-1/2}\exp(\delta \gamma(1-(1-2x\gamma^{-2})^{1/2})),
 #'  \mbox{ for } x \le 0.} It is assumed that \eqn{\delta} and \eqn{\gamma} are
 #'  not simultaneously equal to zero.
-#'@examples
-#'#Evaluate the trawl function at x=-2
-#'trawl_supIG(-2,0.4,0.8)
-#'#Plot the trawl function
-#'plot(trawl_supIG(-(0:10),0.4,0.8))
-
 #'@export
 trawl_supIG <-function(x,delta,gamma){
   r<-(1-2*x/gamma^2)^(-1/2)*exp(delta*gamma*(1-(1-2*x/gamma^2)^(1/2)))
@@ -69,12 +52,6 @@ trawl_supIG <-function(x,delta,gamma){
 #'@details The trawl function is parametrised by the two parameters \eqn{H> 1}
 #'  and \eqn{\alpha > 0} as follows: \deqn{g(x) = (1-x/\alpha)^{-H},  \mbox{ for
 #'  }  x \le 0.}
-#'@examples
-#'#Evaluate the trawl function at x=-2
-#'trawl_LM(-2,0.9,1.5)
-#'#Plot the trawl function
-#'plot(trawl_LM(-(0:10),0.9,1.5))
-
 #'@export
 trawl_LM <- function(x,alpha, H){(1-x/alpha)^(-H)}
 
@@ -106,19 +83,6 @@ trawl_LM <- function(x,alpha, H){(1-x/alpha)^(-H)}
 #'  currently four choices: exponential, double-exponential, supIG or long
 #'  memory. More details on the precise simulation algorithm is available in the
 #'  vignette.
-#'@examples
-#'set.seed(1)
-#'t <- 100
-#'Delta <- 1
-#'v <- 250
-#'lambda <- 0.25
-#'#Simulate a univariate trawl process with exponential trawl function and
-#'#Poisson marginal law
-#'trawl <- sim_UnivariateTrawl(t,Delta,burnin=50,marginal =c("Poi"),trawl
-#'="Exp",v=v, lambda1=lambda)
-#'#Plot the sample path of the simulated process
-#'plot(trawl,type="p")
-
 #'@export
 sim_UnivariateTrawl <-function(t, Delta=1, burnin=10,marginal =base::c("Poi", "NegBin"),trawl =base::c("Exp", "DExp", "supIG", "LM"),
                                v=0,m=0,theta=0, lambda1=0,lambda2=0,w=0,delta=0,gamma=0,alpha=0,H=0){
@@ -216,34 +180,6 @@ sim_UnivariateTrawl <-function(t, Delta=1, burnin=10,marginal =base::c("Poi", "N
 #'  currently four choices: exponential, double-exponential, supIG or long
 #'  memory. More details on the precise simulation algorithm is available in the
 #'  vignette.
-#'@examples
-#'#Simulate a bivariate negative binomial trawl process with exponential trawl
-#'#functions
-#'#Parameters of the exponential trawls:
-#'lambda1 <- 1.2
-#'lambda2 <- 1.5
-#'#Parameters of the negative binomial marginal law:
-#'m1 <- 2.1
-#'theta1 <- 0.9
-#'a1 <- 27.3
-#'m2 <- 2.3
-#'theta2 <- 0.9
-#'a2 <- 35.3
-#'kappa12 <- m1
-#'kappa1 <- 0
-#'kappa2 <- m2 - kappa12
-#'#Specify the time period and grid
-#'t <- 720
-#'Delta <- 1
-#'#Fix the seed
-#'set.seed(1)
-#'#Simulate the bivariate trawl process with common factor
-#'#and independent components ("dep") and negative binomial
-#'# marginal law. Both trawl functions are chosen as exponentials.
-#'simdata <- sim_BivariateTrawl(t, Delta, burnin=10,marginal ="NegBin",
-#'dependencetype="dep", trawl1 ="Exp", trawl2 ="Exp",
-#'kappa1=kappa1,kappa2=kappa2,kappa12=kappa12,a1=a1,a2=a2,lambda11=lambda1,
-#'lambda21 =lambda2)
 #'@export
 
 sim_BivariateTrawl <-function(t, Delta=1, burnin=10,marginal =base::c("Poi", "NegBin"), dependencetype=base::c("fullydep","dep"),
@@ -416,7 +352,7 @@ sim_BivariateTrawl <-function(t, Delta=1, burnin=10,marginal =base::c("Poi", "Ne
       NoJ <- VectorOfJumpTimes12[k] #Number of jumps until time k*Delta
       if(NoJ>0){
         timediff <-k*Delta - jumptimes12[1:NoJ]
-        if(trawl1=="Exp"){
+        if(trawl1=="Exp"){ #UPDATE PARAMETER NAMES FOR TWO PROCESSES
           cond1 <-1-base::ceiling(jumpheights12[1:NoJ]-trawl_Exp(-timediff,lambda11)) }#need jumpheights-function <0 to sum up
         if(trawl1=="DExp"){
           cond1 <-1-base::ceiling(jumpheights12[1:NoJ]-trawl_DExp(-timediff,w1, lambda11, lambda12)) }
@@ -425,7 +361,7 @@ sim_BivariateTrawl <-function(t, Delta=1, burnin=10,marginal =base::c("Poi", "Ne
         if(trawl1=="LM"){
           cond1 <-1-base::ceiling(jumpheights12[1:NoJ]-trawl_LM(-timediff,alpha1,H1)) }
 
-        if(trawl2=="Exp"){
+        if(trawl2=="Exp"){ #UPDATE PARAMETER NAMES FOR TWO PROCESSES
           cond2 <-1-base::ceiling(jumpheights12[1:NoJ]-trawl_Exp(-timediff,lambda21)) }#need jumpheights-function <0 to sum up
         if(trawl2=="DExp"){
           cond2 <-1-base::ceiling(jumpheights12[1:NoJ]-trawl_DExp(-timediff,w2, lambda21, lambda22)) }
@@ -441,7 +377,7 @@ sim_BivariateTrawl <-function(t, Delta=1, burnin=10,marginal =base::c("Poi", "Ne
       NoJ <- VectorOfJumpTimes1[k] #Number of jumps until time k*Delta
       if(NoJ>0){
         timediff <-k*Delta - jumptimes1[1:NoJ]
-        if(trawl1=="Exp"){
+        if(trawl1=="Exp"){ #UPDATE PARAMETER NAMES FOR TWO PROCESSES
           cond1 <-1-base::ceiling(jumpheights1[1:NoJ]-trawl_Exp(-timediff,lambda11)) }#need jumpheights-function <0 to sum up
         if(trawl1=="DExp"){
           cond1 <-1-base::ceiling(jumpheights1[1:NoJ]-trawl_DExp(-timediff,w1, lambda11, lambda12)) }
@@ -496,67 +432,58 @@ sim_BivariateTrawl <-function(t, Delta=1, burnin=10,marginal =base::c("Poi", "Ne
 #'@details This function plots the bivariate histogram of two time series
 #'  together with the univariate histograms
 #'@return no return value
-#'@examples
-#'#Plot a bivariate histogram of two samples from
-#'#independent standard normal random vectors
-#'#Fix the seed
-#'set.seed(1)
-#'plot_2and1hist(stats::rnorm(100,0,1),stats::rnorm(100,0,1))
-#'##############################
-#'#A more interesting example:
-#'#'#Simulate a bivariate negative binomial trawl process with exponential trawl
-#'#functions and plot the bivariate histogram
-#'#Parameters of the exponential trawls:
-#'lambda1 <- 1.2
-#'lambda2 <- 1.5
-#'#Parameters of the negative binomial marginal law:
-#'m1 <- 2.1
-#'theta1 <- 0.9
-#'a1 <- 27.3
-#'m2 <- 2.3
-#'theta2 <- 0.9
-#'a2 <- 35.3
-#'kappa12 <- m1
-#'kappa1 <- 0
-#'kappa2 <- m2 - kappa12
-#'#Specify the time period and grid
-#'t <- 720
-#'Delta <- 1
-#'#Fix the seed
-#'set.seed(1)
-#'#Simulate the bivariate trawl process with common factor
-#'#and independent components ("dep") and negative binomial
-#'# marginal law. Both trawl functions are chosen as exponentials.
-#'simdata <- sim_BivariateTrawl(t, Delta, burnin=10,marginal ="NegBin",
-#'dependencetype="dep",trawl1 ="Exp", trawl2 ="Exp",
-#'kappa1=kappa1,kappa2=kappa2,kappa12=kappa12,a1=a1,a2=a2,lambda11=lambda1,
-#'lambda21 =lambda2)
-#'plot_2and1hist(simdata[,1],simdata[,2])
 #'@export
 plot_2and1hist <- function(x,y){
   if(base::NROW(x)==base::NROW(y)){
-  df = base::data.frame(x,y)
-  h1 <- graphics::hist(df$x, plot=F)
-  h2 <- graphics::hist(df$y,plot=F)
-  top <- base::max(h1$counts, h2$counts)
+    df <- base::data.frame(x,y)
+    h1 <- graphics::hist(df$x, plot=F)
+    h2 <- graphics::hist(df$y,plot=F)
+    top <- base::max(h1$counts, h2$counts)
 
 
-  # Set the margins
-  oldpar <- graphics::par()
-  graphics::par(mar=base::c(3,3,1,1))
-  graphics::layout(matrix(base::c(2,0,1,3),2,2,byrow=T),base::c(3,1), base::c(1,3))
-  squash::hist2(df, base = 2, colFn=squash::rainbow2,key = squash::vkey, nz = 5, bty = 'l')
-  graphics::par(mar=base::c(0,2,1,0))
-  graphics::barplot(h1$counts, axes=T,  space=0, col='red')
-  graphics::par(mar=base::c(2,0,0.5,1))
-  graphics::barplot(h2$counts, axes=T, space=0, col='red', horiz=T)
+    # Set the margins
+    oldpar <- graphics::par()
+    graphics::par(mar=base::c(3,3,1,1))
+    graphics::layout(matrix(base::c(2,0,1,3),2,2,byrow=T),base::c(3,1), base::c(1,3))
+    squash::hist2(df, base = 2, colFn=squash::rainbow2,key = squash::vkey, nz = 5, bty = 'l')
 
-  ###Back to default graphics setting
-  graphics::par(mfrow=base::c(1,1))
-  graphics::par(mar=base::c(5.1, 4.1, 4.1, 2.1), mgp=base::c(3, 1, 0), las=0)
+    graphics::par(mar=base::c(0,2,1,0))
+    graphics::barplot(h1$counts, axes=T,  space=0, col='red')
+    graphics::par(mar=base::c(2,0,0.5,1))
+    graphics::barplot(h2$counts, axes=T, space=0, col='red', horiz=T)
+
+    ###Back to default graphics setting
+    graphics::par(mfrow=base::c(1,1))
+    graphics::par(mar=base::c(5.1, 4.1, 4.1, 2.1), mgp=base::c(3, 1, 0), las=0)
   } else {
     print("Error: x and y do not have the same length")
   }
 
 }
 
+
+#'Plots the bivariate histogram of two time series together with the univariate
+#'histograms using ggplot2
+#'@name plot_2and1hist_gg
+#'@param x vector of equidistant time series data
+#'@param y vector of equidistant time series data (of the same length as x)
+#'@param bivbins number of bins in the bivariate histogram
+#'@param xbins number of bins in the histogram of x
+#'@param ybins number of bins in the histogram of y
+#'@details This function plots the bivariate histogram of two time series
+#'  together with the univariate histograms
+#'@return no return value
+#'@export
+plot_2and1hist_gg <- function(x,y, bivbins =50, xbins=30, ybins=30){
+  if(base::NROW(x)==base::NROW(y)){
+    df <- base::data.frame(x,y)
+    g_biv <-ggplot2::ggplot(df, ggplot2::aes(x=x, y=y) ) +  ggplot2::geom_bin2d(bins = bivbins) +  ggplot2::scale_fill_continuous(type = "viridis") +  ggplot2::theme_bw()
+    g_x <- ggplot2::qplot(x, geom="histogram")+ggplot2::xlab("x")+ggplot2::stat_bin(bins = xbins)
+    g_y <- ggplot2::qplot(y, geom="histogram")+ggplot2::xlab("y")+ggplot2::stat_bin(bins = ybins)
+    ggpubr::ggarrange(g_biv, ggpubr::ggarrange(g_x, g_y,  ncol = 2), nrow = 2, heights = c(2, 0.7))
+
+  } else {
+    print("Error: x and y do not have the same length")
+  }
+
+}

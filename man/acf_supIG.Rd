@@ -32,8 +32,5 @@ The trawl function is parametrised by the two parameters \eqn{\delta
  \ge 0.}
 }
 \examples{
-#Evaluate the trawl autocorrelation function at x=1
 acf_supIG(1,0.3,0.1)
-#Plot the trawl autocorrelation function
-plot(acf_supIG((0:10),0.3,0.1))
 }

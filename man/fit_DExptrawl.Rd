@@ -4,8 +4,7 @@
 \alias{fit_DExptrawl}
 \title{Fits the trawl function consisting of the weighted sum of two exponential functions}
 \usage{
-fit_DExptrawl(x, Delta = 1, GMMlag = 5, plotacf = FALSE,
-  lags = 100)
+fit_DExptrawl(x, Delta = 1, GMMlag = 5, plotacf = FALSE, lags = 100)
 }
 \arguments{
 \item{x}{vector of equidistant time series data}
@@ -42,29 +41,4 @@ The trawl function is parametrised by the three parameters \eqn{0\leq
  we^{\lambda_1 x}+(1-w)e^{\lambda_2 x},  \mbox{ for }  x \le 0.} The Lebesgue measure
  of the corresponding trawl set is given by
  \eqn{w/\lambda_1+(1-w)/\lambda_2}.
-}
-\examples{
-\donttest{
-#Simulate a univariate trawl process and fit the double exponential trawl
-#function
-set.seed(1)
-t <- 1000
-Delta <- 1
-v <- 250
-w <- 0.1
-lambda1 <- 0.1
-lambda2 <- 1
-#Simulate a univariate trawl process with double exponential trawl function
-#and Poisson marginal law
-trawl <- sim_UnivariateTrawl(t,Delta,burnin=50,marginal =c("Poi"),trawl
-="DExp",v=v, w=w,lambda1=lambda1,lambda2=lambda2)
-#Fit the double exponential trawl function to the simulated data
-fittrawlfct <- fit_DExptrawl(trawl,Delta, plotacf=TRUE,lags=500)
-#Print the results
-print(paste("w: estimated:", fittrawlfct$w, ", theoretical:", w))
-print(paste("lambda1: estimated:", fittrawlfct$lambda1, ", theoretical:",
-lambda1))
-print(paste("lambda2: estimated:", fittrawlfct$lambda2, ", theoretical:",
-lambda2))
-}
 }

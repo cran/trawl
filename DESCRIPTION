@@ -1,26 +1,26 @@
 Package: trawl
 Type: Package
 Title: Estimation and Simulation of Trawl Processes
-Version: 0.2.1
+Version: 0.2.2
 Author: Almut E. D. Veraart
 Maintainer: Almut E. D. Veraart <a.veraart@imperial.ac.uk>
 Description: Contains R functions for simulating and estimating integer-valued trawl processes as 
-    described in the article "Modelling, simulation and inference for
-    multivariate time series of counts using trawl processes" by A. E. D. Veraart 
-    (Journal of Multivariate Analysis, 2018, to appear, preprint available at:
-    <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3100076> ) and for 
+    described in the article Veraart (2019),"Modeling, simulation and inference for
+    multivariate time series of counts using trawl processes", Journal of Multivariate Analysis,
+    169, pages 110-129,
+    <doi:10.1016/j.jmva.2018.08.012> and for 
     simulating random vectors from the bivariate negative binomial and the bi- and trivariate 
     logarithmic series distributions.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
-Depends: R (>= 3.4.0)
-Imports: DEoptim, graphics, MASS, rootSolve, Runuran, squash, stats,
-        TSA
+RoxygenNote: 7.1.1
+Depends: R (>= 4.0.0)
+Imports: DEoptim, ggplot2, ggpubr, graphics, MASS, rootSolve, Runuran,
+        stats, squash, TSA
 Suggests: knitr, rmarkdown, testthat
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2018-08-15 19:10:11 UTC; averaart
+Packaged: 2021-02-22 13:25:39 UTC; customer
 Repository: CRAN
-Date/Publication: 2018-08-16 11:50:03 UTC
+Date/Publication: 2021-02-22 17:30:02 UTC

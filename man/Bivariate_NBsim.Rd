@@ -31,12 +31,3 @@ A random vector \eqn{{\bf X}=(X_1,X_2)'} is said to follow the
  for \eqn{i=1,2}, \eqn{x_i\in\{0,1,\dots\}}, \eqn{0<p_i<1} such that
  \eqn{p_1+p_2<1} and \eqn{\kappa>0}.
 }
-\examples{
-set.seed(1)
-kappa <- 3
-p1 <- 0.1
-p2 <- 0.85
-N <- 100
-#Simulate N realisations from the bivariate negative binomial distribution
-y <- Bivariate_NBsim(N,kappa,p1,p2)
-}

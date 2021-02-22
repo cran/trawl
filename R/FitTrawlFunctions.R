@@ -13,25 +13,6 @@
 #'@details The trawl function is parametrised by the parameter \eqn{\lambda > 0}
 #'  as follows: \deqn{g(x) = e^{\lambda x},  \mbox{ for }  x \le 0.} The
 #'  Lebesgue measure of the corresponding trawl set is given by \eqn{1/\lambda}.
-#'@examples
-#'\donttest{
-#'#Simulate a univariate trawl process and fit the exponential trawl function
-#'set.seed(1)
-#'t <- 1000
-#'Delta <- 1
-#'v <- 250
-#'lambda <- 0.25
-#'#Simulate a univariate trawl process with exponential trawl function and
-#'#Poisson marginal law
-#'trawl <- sim_UnivariateTrawl(t,Delta,burnin=50,marginal =c("Poi"),trawl
-#'="Exp",v=v, lambda1=lambda)
-#'#Fit the exponential trawl function to the simulated data
-#'fittrawlfct <- fit_Exptrawl(trawl,Delta, plotacf=TRUE,lags=500)
-#'#Print the results
-#'print(paste("lambda: estimated:", fittrawlfct$lambda, ", theoretical:",
-#'lambda))
-#'}
-
 #'@export
 fit_Exptrawl <- function(x,Delta=1, plotacf=FALSE,lags=100){
   my_acf <- TSA::acf(x,plot=F)
@@ -72,26 +53,6 @@ fit_Exptrawl <- function(x,Delta=1, plotacf=FALSE,lags=100){
 #'  \mbox{ for }  x \le 0.} It is assumed that \eqn{\delta} and \eqn{\gamma} are
 #'  not simultaneously equal to zero. The Lebesgue measure of the corresponding
 #'  trawl set is given by \eqn{\gamma/\delta}.
-#'@examples
-#'\donttest{
-#'#Simulate a univariate trawl process and fit the supIG trawl function
-#'set.seed(1)
-#'t <- 1000
-#'Delta <- 1
-#'v <- 250
-#'delta <- 0.5
-#'gamma <- 1
-#'#Simulate a univariate trawl process with supIG trawl function and
-#'#Poisson marginal law
-#'trawl <- sim_UnivariateTrawl(t,Delta,burnin=50,marginal =c("Poi"),trawl
-#'="supIG",v=v, delta=delta,gamma=gamma)
-#'#Fit the supIG trawl function to the simulated data
-#'fittrawlfct <- fit_supIGtrawl(trawl,Delta, plotacf=TRUE,lags=500)
-#'#Print the results
-#'print(paste("delta: estimated:", fittrawlfct$delta, ", theoretical:", delta))
-#'print(paste("gamma: estimated:", fittrawlfct$gamma, ", theoretical:", gamma))
-#'}
-
 #'@export
 fit_supIGtrawl <- function(x,Delta=1,GMMlag=5,plotacf=FALSE,lags=100){
   my_acf <- TSA::acf(x,plot=F)
@@ -146,26 +107,6 @@ fit_supIGtrawl <- function(x,Delta=1,GMMlag=5,plotacf=FALSE,lags=100){
 #'  and \eqn{\alpha > 0} as follows: \deqn{g(x) = (1-x/\alpha)^{-H},\mbox{ for }
 #'  x \le  0.} The Lebesgue measure of the corresponding trawl set is given by
 #'  \eqn{\alpha/(1-H)}.
-#'@examples
-#'\donttest{
-#'#Simulate a univariate trawl process and fit the long memory trawl function
-#'set.seed(1)
-#'t <- 1000
-#'Delta <- 1
-#'v <- 250
-#'alpha <- 0.01
-#'H <- 1.3
-#'#Simulate a univariate trawl process with LM trawl function and Poisson
-#'#marginal law
-#'trawl <- sim_UnivariateTrawl(t,Delta,burnin=50,marginal =c("Poi"),trawl
-#'="LM",v=v, alpha=alpha, H=H)
-#'#Fit the LM trawl function to the simulated data
-#'fittrawlfct <- fit_LMtrawl(trawl,Delta, plotacf=TRUE,lags=500)
-#'#Print the results
-#'print(paste("alpha: estimated:", fittrawlfct$alpha, ", theoretical:", alpha))
-#'print(paste("H: estimated:", fittrawlfct$H, ", theoretical:", H))
-#'}
-
 #'@export
 fit_LMtrawl <- function(x,Delta=1, GMMlag=5, plotacf=FALSE,lags=100){
   my_acf <- TSA::acf(x,plot=F)
@@ -225,30 +166,6 @@ fit_LMtrawl <- function(x,Delta=1, GMMlag=5, plotacf=FALSE,lags=100){
 #'  we^{\lambda_1 x}+(1-w)e^{\lambda_2 x},  \mbox{ for }  x \le 0.} The Lebesgue measure
 #'  of the corresponding trawl set is given by
 #'  \eqn{w/\lambda_1+(1-w)/\lambda_2}.
-#'@examples
-#'\donttest{
-#'#Simulate a univariate trawl process and fit the double exponential trawl
-#'#function
-#'set.seed(1)
-#'t <- 1000
-#'Delta <- 1
-#'v <- 250
-#'w <- 0.1
-#'lambda1 <- 0.1
-#'lambda2 <- 1
-#'#Simulate a univariate trawl process with double exponential trawl function
-#'#and Poisson marginal law
-#'trawl <- sim_UnivariateTrawl(t,Delta,burnin=50,marginal =c("Poi"),trawl
-#'="DExp",v=v, w=w,lambda1=lambda1,lambda2=lambda2)
-#'#Fit the double exponential trawl function to the simulated data
-#'fittrawlfct <- fit_DExptrawl(trawl,Delta, plotacf=TRUE,lags=500)
-#'#Print the results
-#'print(paste("w: estimated:", fittrawlfct$w, ", theoretical:", w))
-#'print(paste("lambda1: estimated:", fittrawlfct$lambda1, ", theoretical:",
-#'lambda1))
-#'print(paste("lambda2: estimated:", fittrawlfct$lambda2, ", theoretical:",
-#'lambda2))
-#'}
 #'@export
 fit_DExptrawl <- function(x,Delta=1, GMMlag=5, plotacf=FALSE,lags=100){
   my_acf <- TSA::acf(x,plot=F)
@@ -282,6 +199,6 @@ fit_DExptrawl <- function(x,Delta=1, GMMlag=5, plotacf=FALSE,lags=100){
     graphics::lines(tt, acf_DExp(tt*Delta,o$optim$bestmem[1],o$optim$bestmem[2],o$optim$bestmem[3]), lty =1,col=2, lwd=2)
   }
 
-  return(list("w"=as.numeric(o$optim$bestmem[1]), "lambda1"=as.numeric(o$optim$bestmem[2]), "lambda2"=as.numeric(o$optim$bestmem[3]),"LM"=as.numeric(o$optim$bestmem[1])/as.numeric(o$optim$bestmem[2])+(1-as.numeric(o$optim$bestmem[1]))/as.numeric(o$optim$bestmem[3])))
+  return(list("w"=as.numeric(o$optim$bestmem[1]), "lambda_1"=as.numeric(o$optim$bestmem[2]), "lambda_2"=as.numeric(o$optim$bestmem[3]),"LM"=as.numeric(o$optim$bestmem[1])/as.numeric(o$optim$bestmem[2])+(1-as.numeric(o$optim$bestmem[1]))/as.numeric(o$optim$bestmem[3])))
 }
 

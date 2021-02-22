@@ -32,22 +32,3 @@ The trawl function is parametrised by the parameter \eqn{\lambda > 0}
  as follows: \deqn{g(x) = e^{\lambda x},  \mbox{ for }  x \le 0.} The
  Lebesgue measure of the corresponding trawl set is given by \eqn{1/\lambda}.
 }
-\examples{
-\donttest{
-#Simulate a univariate trawl process and fit the exponential trawl function
-set.seed(1)
-t <- 1000
-Delta <- 1
-v <- 250
-lambda <- 0.25
-#Simulate a univariate trawl process with exponential trawl function and
-#Poisson marginal law
-trawl <- sim_UnivariateTrawl(t,Delta,burnin=50,marginal =c("Poi"),trawl
-="Exp",v=v, lambda1=lambda)
-#Fit the exponential trawl function to the simulated data
-fittrawlfct <- fit_Exptrawl(trawl,Delta, plotacf=TRUE,lags=500)
-#Print the results
-print(paste("lambda: estimated:", fittrawlfct$lambda, ", theoretical:",
-lambda))
-}
-}

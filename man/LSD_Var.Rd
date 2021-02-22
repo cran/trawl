@@ -20,6 +20,3 @@ A random variable \eqn{X} has logarithmic series distribution with
  parameter \eqn{0<p<1}  if \deqn{P(X=x)=(-1)/(\log(1-p))p^x/x, \mbox{ for }
  x=1,2,\dots.}
 }
-\examples{
-LSD_Var(0.5)
-}

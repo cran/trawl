@@ -1,10 +1,10 @@
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ##Poisson with Exp trawl
 set.seed(1)
 t<-1000
@@ -30,7 +30,7 @@ print(paste("v: estimated:", fitmarginallaw$v, ", theoretical:", v))
 
 
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ##Poisson with supIG trawl
 set.seed(1)
 t<-1000
@@ -57,7 +57,7 @@ print(paste("gamma: estimated:", fittrawlfct$gamma, ", theoretical:", gamma))
 print(paste("v: estimated:", fitmarginallaw$v, ", theoretical:", v))
 
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ##Negative binomial with Exp trawl
 set.seed(1)
 t<-1000
@@ -87,7 +87,7 @@ print(paste("theta: estimated:", fitmarginallaw$theta, ", theoretical:", theta))
 
 
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 ##Negative binomial with LM trawl
 set.seed(1)
 t<-1000
@@ -117,7 +117,7 @@ print(paste("m: estimated:", fitmarginallaw$m, ", theoretical:", m))
 print(paste("theta: estimated:", fitmarginallaw$theta, ", theoretical:", theta))
 
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 #Exponential trawls
 lambda1 <- 1.2
 lambda2 <- 1.5
@@ -156,6 +156,10 @@ trawl2 <- simdata[,2]
 
 #####Produce a bivariate histogram of the simulated data
 trawl::plot_2and1hist(trawl1,trawl2)
+
+#####Produce a bivariate histogram of the simulated data
+# using ggplot2
+trawl::plot_2and1hist_gg(trawl1,trawl2)
 
 
 ###Fit the parameters of the exponential trawl functions

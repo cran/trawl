@@ -22,9 +22,3 @@ Evaluates the exponential trawl function
 The trawl function is parametrised by parameter \eqn{\lambda > 0}  as
  follows: \deqn{g(x) = e^{\lambda x},  \mbox{ for }  x \le 0.}
 }
-\examples{
-#Evaluate the trawl function at x=-2
-trawl_Exp(-2,0.4)
-#Plot the trawl function
-plot(trawl_Exp(-(0:10),0.4))
-}

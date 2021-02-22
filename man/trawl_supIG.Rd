@@ -26,9 +26,3 @@ The trawl function is parametrised by the two parameters \eqn{\delta
  \mbox{ for } x \le 0.} It is assumed that \eqn{\delta} and \eqn{\gamma} are
  not simultaneously equal to zero.
 }
-\examples{
-#Evaluate the trawl function at x=-2
-trawl_supIG(-2,0.4,0.8)
-#Plot the trawl function
-plot(trawl_supIG(-(0:10),0.4,0.8))
-}

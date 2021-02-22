@@ -13,14 +13,6 @@
 #'  \Gamma(\kappa)}p_1^{x_1}p_2^{x_2}(1-p_1-p_2)^{\kappa},} where,
 #'  for \eqn{i=1,2}, \eqn{x_i\in\{0,1,\dots\}}, \eqn{0<p_i<1} such that
 #'  \eqn{p_1+p_2<1} and \eqn{\kappa>0}.
-#'@examples
-#'set.seed(1)
-#'kappa <- 3
-#'p1 <- 0.1
-#'p2 <- 0.85
-#'N <- 100
-#'#Simulate N realisations from the bivariate negative binomial distribution
-#'y <- Bivariate_NBsim(N,kappa,p1,p2)
 
 #'@export
 
@@ -67,13 +59,6 @@ Bivariate_NBsim <-function(N, kappa, p1, p2){
 #'  \eqn{X_2|X_1=x_1} follows the  logarithmic series distribution with
 #'  parameter \eqn{p_2} when \eqn{x_1=0}, and the  negative binomial
 #'  distribution with parameters \eqn{(x_1,p_2)} when  \eqn{x_1>0}.
-#'@examples
-#'set.seed(1)
-#'p1 <- 0.15
-#'p2 <- 0.3
-#'N <- 100
-#'#Simulate N realisations from the bivariate LSD
-#'y <- Bivariate_LSDsim(N, p1, p2)
 #'@export
 Bivariate_LSDsim <-function(N, p1, p2){
 
@@ -130,14 +115,6 @@ Bivariate_LSDsim <-function(N, p1, p2){
 #'  distribution with parameters \eqn{(p_2,p_3)} when \eqn{x_1=0}, and the
 #'  bivariate negative binomial distribution with parameters \eqn{(x_1,p_2,p_3)}
 #'  when  \eqn{x_1>0}.
-#'@examples
-#' set.seed(1)
-#' p1 <- 0.15
-#' p2 <- 0.25
-#' p3 <- 0.55
-#' N <- 100
-#' #Simulate N realisations from the bivariate LSD
-#' y <- Trivariate_LSDsim(N, p1, p2, p3)
 #'@export
 
 
@@ -192,8 +169,6 @@ Trivariate_LSDsim <-function(N, p1, p2, p3){
 #'@details A random variable \eqn{X} has logarithmic series distribution with
 #'  parameter \eqn{0<p<1}  if \deqn{P(X=x)=(-1)/(\log(1-p))p^x/x, \mbox{ for }
 #'  x=1,2,\dots.}
-#'@examples
-#'LSD_Mean(0.5)
 #'@export
 LSD_Mean <-function(p){p/((1-p)*(-log(1-p)))}
 
@@ -205,8 +180,6 @@ LSD_Mean <-function(p){p/((1-p)*(-log(1-p)))}
 #'@details A random variable \eqn{X} has logarithmic series distribution with
 #'  parameter \eqn{0<p<1}  if \deqn{P(X=x)=(-1)/(\log(1-p))p^x/x, \mbox{ for }
 #'  x=1,2,\dots.}
-#'@examples
-#'LSD_Var(0.5)
 #'@export
 
 LSD_Var<-function(p){(-p)*(p+log(1-p))/((1-p)*log(1-p))^2}
@@ -222,9 +195,6 @@ LSD_Var<-function(p){(-p)*(p+log(1-p))/((1-p)*log(1-p))^2}
 #'  distribution with parameters \eqn{0 \le \delta <1} and \eqn{0<p<1}  if
 #'  \eqn{P(X=0)=(1-\delta)} and \deqn{P(X=x)=(1-\delta)(-1)/(\log(1-p))p^x/x,
 #'  \mbox{ for  } x=1,2,\dots.}
-#'@examples
-#'ModLSD_Mean(0.2,0.5)
-
 #'@export
 ModLSD_Mean<-function(delta,p){(1-delta)*LSD_Mean(p)}
 
@@ -239,8 +209,6 @@ ModLSD_Mean<-function(delta,p){(1-delta)*LSD_Mean(p)}
 #'  distribution with parameters \eqn{0\le \delta <1} and \eqn{0<p<1}  if
 #'  \eqn{P(X=0)=(1-\delta)} and \deqn{P(X=x)=(1-\delta)(-1)/(\log(1-p))p^x/x,
 #'  \mbox{ for }  x=1,2,\dots.}
-#'@examples
-#'ModLSD_Var(0.2,0.5)
 #'@export
 ModLSD_Var<-function(delta,p){
   EB <- (1-delta)
@@ -263,8 +231,6 @@ ModLSD_Var<-function(delta,p){
 #'  distribution
 #'@return Correlation of the components of a bivariate vector following the
 #'  bivariate  logarithmic series distribution
-#'@examples
-#'BivLSD_Cor(0.2,0.5)
 #'@export
 
 BivLSD_Cor <-function(p1,p2){
@@ -284,9 +250,6 @@ BivLSD_Cor <-function(p1,p2){
 #'  distribution
 #'@return Covariance of the components of a bivariate vector following the
 #'  bivariate  logarithmic series distribution
-#'@examples
-#'BivLSD_Cov(0.2,0.5)
-
 #'@export
 
 BivLSD_Cov <-function(p1,p2){
@@ -313,8 +276,6 @@ BivLSD_Cov <-function(p1,p2){
 #'  distribution
 #'@return Covariance of the components of a bivariate vector following the
 #'  bivariate  modified  logarithmic series distribution
-#'@examples
-#'BivModLSD_Cov(0.2, 0.3, 0.5)
 #'@export
 
 BivModLSD_Cov <-function(delta,p1,p2){
@@ -348,9 +309,6 @@ BivModLSD_Cov <-function(delta,p1,p2){
 #'  distribution
 #'@return Covariance of the components of a bivariate vector following the
 #'  bivariate  modified  logarithmic series distribution
-#'@examples
-#'BivModLSD_Cor(0.2, 0.3, 0.5)
-
 #'@export
 
 BivModLSD_Cor <-function(delta,p1,p2){

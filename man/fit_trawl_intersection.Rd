@@ -4,11 +4,27 @@
 \alias{fit_trawl_intersection}
 \title{Finds the intersection of two trawl sets}
 \usage{
-fit_trawl_intersection(fct1 = base::c("Exp", "DExp", "supIG", "LM"),
-  fct2 = base::c("Exp", "DExp", "supIG", "LM"), lambda11 = 0,
-  lambda12 = 0, w1 = 0, delta1 = 0, gamma1 = 0, alpha1 = 0,
-  H1 = 0, lambda21 = 0, lambda22 = 0, w2 = 0, delta2 = 0,
-  gamma2 = 0, alpha2 = 0, H2 = 0, LM1, LM2, plotdiag = FALSE)
+fit_trawl_intersection(
+  fct1 = base::c("Exp", "DExp", "supIG", "LM"),
+  fct2 = base::c("Exp", "DExp", "supIG", "LM"),
+  lambda11 = 0,
+  lambda12 = 0,
+  w1 = 0,
+  delta1 = 0,
+  gamma1 = 0,
+  alpha1 = 0,
+  H1 = 0,
+  lambda21 = 0,
+  lambda22 = 0,
+  w2 = 0,
+  delta2 = 0,
+  gamma2 = 0,
+  alpha2 = 0,
+  H2 = 0,
+  LM1,
+  LM2,
+  plotdiag = FALSE
+)
 }
 \arguments{
 \item{fct1}{specifies the type of the first trawl function}
@@ -49,8 +65,4 @@ Finds the intersection of two trawl sets
 \details{
 Computes \eqn{R_{12}(0)=\mbox{Leb}(A_1 \cap A_2)} based on two trawl
  functions \eqn{g_1} and \eqn{g_2}.
-}
-\examples{
-#Compute the intersection of two exponential trawls
-fit_trawl_intersection(fct1="Exp",fct2="Exp",lambda11=0.1,lambda21=0.5,LM1=1/0.1,LM2=1/0.5)
 }
